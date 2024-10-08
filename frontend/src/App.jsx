@@ -7,7 +7,8 @@ import './App.scss';
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem/>
+      <PhotoListItem />
+      We rendering now
     </div>
   );
 };
