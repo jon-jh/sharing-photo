@@ -3,10 +3,18 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import photos from "mocks/photos";
 import topics from 'mocks/topics';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const App = () => {
   const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
   const [favoritesArray, modifyFavoritesArray] = useState([]);
+  // 0. declare the state of the photo (is it selected?)
+  const [photoSelected, setSelectedPhoto] = useState(null)
+  // 1. declare the photo click handler to open the modal/popup. This is passed down to the homeroute component.
+  const handlePhotoClick = (photo) => {
+    setSelectedPhoto(photo)
+    alert('photo clicked')
+  };
 
   const addOrRemoveFav = (id, state) => {
     if (state) {
@@ -36,7 +44,11 @@ const App = () => {
         photos={photos}
         isFavPhotoExist={isFavPhotoExist}
         addOrRemoveFav={addOrRemoveFav}
+        handlePhotoClick={handlePhotoClick}
       />
+      {photoSelected && (
+        <PhotoDetailsModal photo={photoSelected} />
+      )}
     </div>
   );
 };

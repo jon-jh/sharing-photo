@@ -8,7 +8,8 @@ const HomeRoute = (props) => {
     topics,
     photos,
     isFavPhotoExist,
-    addOrRemoveFav
+    addOrRemoveFav,
+    handlePhotoClick
   } = props;
 
   return (
@@ -18,6 +19,7 @@ const HomeRoute = (props) => {
         photos={photos}
         isFavPhotoExist={isFavPhotoExist}
         addOrRemoveFav={addOrRemoveFav}
+        handlePhotoClick={handlePhotoClick}
       />
     </div>
   );
