@@ -26,20 +26,20 @@ const App = () => {
     if (state) {
       modifyFavoritesArray(currentFavs => {
         const updatedFavs = currentFavs.filter(fav => Number(fav.id) !== Number(id) + 1);
-        console.log('Updated Favorites Array (after removal):', updatedFavs);
+        console.log('Updated favoritesArray (REMOVAL):', updatedFavs);
         return updatedFavs;
       });
     } else {
       modifyFavoritesArray(currentFavs => {
         const updatedFavs = [...currentFavs, photos[id]];
-        console.log('Updated Favorites Array (after addition):', updatedFavs);
+        console.log('Updated favoritesArray (ADDITION):', updatedFavs);
         return updatedFavs;
       });
     }
   };
 
   useEffect(() => {
-    console.log('Favorite Photos Array:', favoritesArray);
+    console.log('favoritesArray length:', favoritesArray.length);
     setIsFavPhotoExist(favoritesArray.length > 0);
   }, [favoritesArray]);
 
