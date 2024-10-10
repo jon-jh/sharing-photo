@@ -31,6 +31,7 @@ const PhotoDetailsModal = (props) => {
       {/* Added a check (similar_photos &&) to which makes sure similar_photos is not null or undefined before rendering it to an array. 
       <PhotoList photos={Object.values(similar_photos)} /> converts the original object similar_photos to an array.*/}
       <div className="photo-details-modal__images">
+        <h2>Similar Photos</h2>
         {similar_photos && <PhotoList photos={Object.values(similar_photos)} />}
       </div>
     </div>
