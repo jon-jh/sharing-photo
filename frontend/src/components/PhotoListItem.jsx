@@ -11,11 +11,12 @@ const PhotoListItem = (props) => {
   } = props.photoData;
   const isFavPhotoExist = props.isFavPhotoExist;
   const addPhotoToFavorites = props.addPhotoToFavorites;
+  const addOrRemoveFav = props.addOrRemoveFav
 
   return (
     <div>
       <div className="photo-list__item" key={id}>
-        <PhotoFavButton isFavPhotoExist={isFavPhotoExist} addPhotoToFavorites={addPhotoToFavorites}/>
+        <PhotoFavButton isFavPhotoExist={isFavPhotoExist} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} id={id} />
         <img className="photo-list__image" src={imageSource} alt="Photo" />
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={profile} />

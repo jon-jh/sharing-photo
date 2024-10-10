@@ -1,8 +1,6 @@
 import React from "react";
-
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
 const sampleDataForPhotoList = [
   {
@@ -59,19 +57,20 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const photos = props.photos;
-  const isFavPhotoExist = props.isFavPhotoExist;
-  const addPhotoToFavorites = props.addPhotoToFavorites;
+  const { photos, isFavPhotoExist, addOrRemoveFav } = props;
+
   const photoPopulator = photos.map(photo => (
-    <PhotoListItem key={photo.id} photoData={photo} isFavPhotoExist={isFavPhotoExist} addPhotoToFavorites={addPhotoToFavorites}/>
-  ))
-  
+    <PhotoListItem
+      key={photo.id}
+      photoData={photo}
+      isFavPhotoExist={isFavPhotoExist}
+      addOrRemoveFav={addOrRemoveFav}
+    />
+  ));
 
   return (
     <ul className="photo-list">
-      {/* Insert React */}
       {photoPopulator}
-
     </ul>
   );
 };
