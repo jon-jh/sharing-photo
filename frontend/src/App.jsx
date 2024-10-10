@@ -8,6 +8,7 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from "mocks/photos";
 import topics from 'mocks/topics';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const photoArray = [];
 // const arrayHelper = (limit) => {
@@ -33,6 +34,13 @@ const App = () => {
       photos[photoId]
     ]);
   };
+
+  useEffect(() => {
+    console.log('Favorite Photos Array:', favoritePhotosArray);
+  }, [favoritePhotosArray]);
+
+  // log the favoritePhotosArray to check
+
 
   return (
     <div className="App">
