@@ -19,6 +19,21 @@ const photoArray = [];
 
 const App = () => {
   const [isFavPhoto, isFavPhotoExist] = useState(false);
+
+  // Add array for favorite photos
+
+  const [
+    favoritePhotosArray,
+    updateFavoritePhotosArray
+  ] = useState([]);
+
+  const addPhotoToFavorites = (photoId) => {
+    updateFavoritePhotosArray(currentFavoritesArray => [
+      ...currentFavoritesArray,
+      photos[photoId]
+    ]);
+  };
+
   return (
     <div className="App">
       Page TOP
@@ -26,7 +41,7 @@ const App = () => {
       {/* <TopNavigation />
       <TopicList />
       <PhotoList /> */}
-      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} />
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} addPhotoToFavorites={addPhotoToFavorites} />
       Page BOTTOM
     </div>
   );
