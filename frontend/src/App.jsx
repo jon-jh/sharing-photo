@@ -53,7 +53,13 @@ const App = () => {
         handlePhotoClick={handlePhotoClick}
       />
       {photoSelected && (
-        <PhotoDetailsModal photo={photoSelected} handleCloseButton={handleCloseButton} />
+        <PhotoDetailsModal photo={photoSelected}
+          handleCloseButton={handleCloseButton}
+          photos={photos}
+          isFavPhotoExist={isFavPhotoExist}
+          addOrRemoveFav={addOrRemoveFav}
+          handlePhotoClick={handlePhotoClick}
+        />
       )}
     </div>
   );
