@@ -3,6 +3,7 @@ import React from 'react';
 import './App.scss';
 import PhotoList from 'components/PhotoList';
 import TopicList from 'components/TopicList';
+import TopNavigation from 'components/TopNavigationBar';
 
 const photoArray = [];
 // const arrayHelper = (limit) => {
@@ -17,6 +18,7 @@ const App = () => {
     <div className="App">
       Page TOP
       {/* {photoArray} */}
+      <TopNavigation />
       <TopicList />
       <PhotoList />
       Page BOTTOM
