@@ -1,26 +1,20 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 
-
-
 const PhotoListItem = (props) => {
-  /* Insert React */
-  // After moving it to app.js, it became (props)
-  // Destructure the sample data object
-  const { id, location, imageSource, username, profile } = props.data;
-  
+  const { username, imageSource, id, location, profile } = props.photoData;
   return (
     <div>
-      <img src = {imageSource} />
-      <img src = {profile} />
-      {id}
-      {location.city}
-      {location.country}
-      {username}
+      <img className="photo-list__image" src={imageSource} alt="Photo" />
+      <div className="photo-list__user-details">
+        <img className="photo-list__user-profile" src={profile} alt="Profile" />
+        <div className="photo-list__user-info">
+          <p>{username}</p>
+          <p className="photo-list__user-location">{location.city}, {location.country}</p>
+        </div>
+      </div>
     </div>
-  )
-
+  );
 };
 
 export default PhotoListItem;
