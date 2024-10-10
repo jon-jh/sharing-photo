@@ -21,7 +21,9 @@ const sampleDataForTopicList = [
   },
 ];
 
-const TopicList = () => {
+const TopicList = (props) => {
+  const topics = props.topics;
+  
   const populateTopicList = topics.map(topic => (
     <TopicListItem key={topic.id} topicData={topic} />
   ))

@@ -58,7 +58,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+  const photos = props.photos;
 
   const photoPopulator = photos.map(photo => (
     <PhotoListItem key={photo.id} photoData={photo} />

@@ -5,6 +5,8 @@ import PhotoList from 'components/PhotoList';
 import TopicList from 'components/TopicList';
 import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
+import photos from "mocks/photos";
+import topics from 'mocks/topics';
 
 const photoArray = [];
 // const arrayHelper = (limit) => {
@@ -22,7 +24,7 @@ const App = () => {
       {/* <TopNavigation />
       <TopicList />
       <PhotoList /> */}
-      <HomeRoute />
+      <HomeRoute topics={topics} photos={photos} />
       Page BOTTOM
     </div>
   );
