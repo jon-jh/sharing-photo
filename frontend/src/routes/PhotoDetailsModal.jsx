@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
-import photos from 'mocks/photos';
 
 const PhotoDetailsModal = (props) => {
   const { photo, handleCloseButton } = props;
@@ -10,7 +9,8 @@ const PhotoDetailsModal = (props) => {
     id,
     user: { name: username, profile },
     urls: { full: imageSource },
-    location: { city, country }
+    location: { city, country },
+    similar_photos
   } = photo;
 
   return (
@@ -29,13 +29,10 @@ const PhotoDetailsModal = (props) => {
         </div>
       </div>
       <div className="photo-details-modal__images">
-        {/* Loading the entire photoList underneath as 'similar photos' for now.*/}
-        <PhotoList photos={photos} />
+        <PhotoList photos={Object.values(similar_photos)} />
       </div>
     </div>
   );
 };
 
 export default PhotoDetailsModal;
-
-
