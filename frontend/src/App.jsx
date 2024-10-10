@@ -13,7 +13,13 @@ const App = () => {
   // 1. declare the photo click handler to open the modal/popup. This is passed down to the homeroute component.
   const handlePhotoClick = (photo) => {
     setSelectedPhoto(photo)
-    alert('photo clicked')
+    console.log('You clicked a photo')
+  };
+
+  // declare the state handler for the close button on the modal/
+  const handleCloseButton = () => {
+    setSelectedPhoto(null)
+    console.log('The modal close button was clicked')
   };
 
   const addOrRemoveFav = (id, state) => {
@@ -47,7 +53,7 @@ const App = () => {
         handlePhotoClick={handlePhotoClick}
       />
       {photoSelected && (
-        <PhotoDetailsModal photo={photoSelected} />
+        <PhotoDetailsModal photo={photoSelected} handleCloseButton={handleCloseButton}/>
       )}
     </div>
   );
