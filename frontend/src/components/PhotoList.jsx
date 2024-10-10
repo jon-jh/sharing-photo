@@ -60,10 +60,12 @@ const sampleDataForPhotoList = [
 
 const PhotoList = (props) => {
   const photos = props.photos;
+  const isFavPhotoExist = props.isFavPhotoExist;
 
   const photoPopulator = photos.map(photo => (
-    <PhotoListItem key={photo.id} photoData={photo} />
+    <PhotoListItem key={photo.id} photoData={photo} isFavPhotoExist={isFavPhotoExist} />
   ))
+  
   return (
     <ul className="photo-list">
       {/* Insert React */}

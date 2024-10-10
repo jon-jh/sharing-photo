@@ -9,11 +9,12 @@ const PhotoListItem = (props) => {
     urls: { full: imageSource },
     location: { city, country }
   } = props.photoData;
+  const isFavPhotoExist = props.isFavPhotoExist;
 
   return (
     <div>
       <div className="photo-list__item" key={id}>
-        <PhotoFavButton key={id} />
+        <PhotoFavButton isFavPhotoExist={isFavPhotoExist} />
         <img className="photo-list__image" src={imageSource} alt="Photo" />
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={profile} />

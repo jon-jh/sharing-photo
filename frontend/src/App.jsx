@@ -7,6 +7,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import photos from "mocks/photos";
 import topics from 'mocks/topics';
+import { useState } from 'react';
 
 const photoArray = [];
 // const arrayHelper = (limit) => {
@@ -17,6 +18,7 @@ const photoArray = [];
 // arrayHelper(3);
 
 const App = () => {
+  const [isFavPhoto, isFavPhotoExist] = useState(false);
   return (
     <div className="App">
       Page TOP
@@ -24,7 +26,7 @@ const App = () => {
       {/* <TopNavigation />
       <TopicList />
       <PhotoList /> */}
-      <HomeRoute topics={topics} photos={photos} />
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} />
       Page BOTTOM
     </div>
   );
