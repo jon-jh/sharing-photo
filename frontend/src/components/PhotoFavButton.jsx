@@ -11,7 +11,6 @@ function PhotoFavButton(props) {
   const handleFav = () => {
     toggleFavState(!favButton);
     alert(favButton);
-    isFavPhotoExist(true);
     addOrRemoveFav(id, favButton);
   };
 
