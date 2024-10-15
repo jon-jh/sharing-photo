@@ -1,52 +1,64 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import photos from "mocks/photos";
+
+const initialState = {
+  isFavPhotoExist: false,
+  favoritesArray: [],
+  photoSelected: null,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_SELECTED_PHOTO':
+      return { ...state, photoSelected: action.payload };
+    case 'CLOSE_PHOTO':
+      return { ...state, photoSelected: null };
+    case 'ADD_FAVORITE':
+      const updatedFavsAdd = [...state.favoritesArray, photos[action.payload]];
+      return { ...state, favoritesArray: updatedFavsAdd, isFavPhotoExist: updatedFavsAdd.length > 0 };
+    case 'REMOVE_FAVORITE':
+      const updatedFavsRemove = state.favoritesArray.filter(fav => Number(fav.id) !== Number(action.payload) + 1);
+      return { ...state, favoritesArray: updatedFavsRemove, isFavPhotoExist: updatedFavsRemove.length > 0 };
+    default:
+      throw new Error('Unknown action type');
+  }
+}
+
 const useApplicationData = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [isFavPhotoExist, setIsFavPhotoExist] = useState(false);
-  const [favoritesArray, modifyFavoritesArray] = useState([]);
-  // 0. declare the state of the photo (is it selected?)
-  const [photoSelected, setSelectedPhoto] = useState(null)
-  // 1. declare the photo click handler to open the modal/popup. This is passed down to the homeroute component.
   const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo)
-    console.log('You clicked a photo')
+    dispatch({ type: 'SET_SELECTED_PHOTO', payload: photo });
+    console.log('You clicked a photo');
   };
 
-  // declare the state handler for the close button on the modal/
   const handleCloseButton = () => {
-    setSelectedPhoto(null)
-    console.log('The modal close button was clicked')
+    dispatch({ type: 'CLOSE_PHOTO' });
+    console.log('The modal close button was clicked');
   };
 
-  const addOrRemoveFav = (id, state) => {
-    if (state) {
-      modifyFavoritesArray(currentFavs => {
-        const updatedFavs = currentFavs.filter(fav => Number(fav.id) !== Number(id) + 1);
-        console.log('Updated favoritesArray (REMOVAL):', updatedFavs);
-        return updatedFavs;
-      });
+  const addOrRemoveFav = (id, isFavorite) => {
+    if (isFavorite) {
+      dispatch({ type: 'REMOVE_FAVORITE', payload: id });
+      console.log('Updated favoritesArray (REMOVAL)');
     } else {
-      modifyFavoritesArray(currentFavs => {
-        const updatedFavs = [...currentFavs, photos[id]];
-        console.log('Updated favoritesArray (ADDITION):', updatedFavs);
-        return updatedFavs;
-      });
+      dispatch({ type: 'ADD_FAVORITE', payload: id });
+      console.log('Updated favoritesArray (ADDITION)');
     }
   };
 
   useEffect(() => {
-    console.log('favoritesArray length:', favoritesArray.length);
-    setIsFavPhotoExist(favoritesArray.length > 0);
-  }, [favoritesArray]);
+    console.log('favoritesArray length:', state.favoritesArray.length);
+  }, [state.favoritesArray]);
 
   return {
-    isFavPhotoExist,
-    favoritesArray,
-    photoSelected,
+    isFavPhotoExist: state.isFavPhotoExist,
+    favoritesArray: state.favoritesArray,
+    photoSelected: state.photoSelected,
     handlePhotoClick,
     handleCloseButton,
-    addOrRemoveFav
+    addOrRemoveFav,
   };
-}
+};
 
 export default useApplicationData;
