@@ -1,5 +1,6 @@
 import { useReducer, useEffect } from "react";
 import photos from "mocks/photos";
+import { SET_SELECTED_PHOTO, CLOSE_PHOTO, ADD_FAVORITE, REMOVE_FAVORITE } from './actionTypes';
 
 const initialState = {
   isFavPhotoExist: false,
@@ -7,22 +8,25 @@ const initialState = {
   photoSelected: null,
 };
 
+
+
 function reducer(state, action) {
   switch (action.type) {
-    case 'SET_SELECTED_PHOTO':
+    case SET_SELECTED_PHOTO:
       return { ...state, photoSelected: action.payload };
-    case 'CLOSE_PHOTO':
+    case CLOSE_PHOTO:
       return { ...state, photoSelected: null };
-    case 'ADD_FAVORITE':
+    case ADD_FAVORITE:
       const updatedFavsAdd = [...state.favoritesArray, photos[action.payload]];
       return { ...state, favoritesArray: updatedFavsAdd, isFavPhotoExist: updatedFavsAdd.length > 0 };
-    case 'REMOVE_FAVORITE':
+    case REMOVE_FAVORITE:
       const updatedFavsRemove = state.favoritesArray.filter(fav => Number(fav.id) !== Number(action.payload) + 1);
       return { ...state, favoritesArray: updatedFavsRemove, isFavPhotoExist: updatedFavsRemove.length > 0 };
     default:
       throw new Error('Unknown action type');
   }
 }
+
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
