@@ -52,7 +52,7 @@ const useApplicationData = () => {
   };
 
   useEffect(() => {
-    console.log('favoritesArray length:', state.favoritesArray.length);
+    console.log('favoritesArray', state.favoritesArray);
   }, [state.favoritesArray]);
 
   return {
