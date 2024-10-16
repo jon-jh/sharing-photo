@@ -7,7 +7,7 @@ const initialState = {
   navAtLeastOneFavCheck: false,
   favoritesArray: [],
   photoSelected: null,
-  photoData: [],
+  photos: [],
   topicData: []
 };
 
@@ -85,6 +85,7 @@ const useApplicationData = () => {
     handlePhotoClick,
     handleCloseButton,
     addOrRemoveFav,
+    photos: state.photos
   };
 };
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photos from "mocks/photos";
+// import photos from "mocks/photos";
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const {
+    photos,
     navAtLeastOneFavCheck,
     photoSelected,
     handlePhotoClick,
