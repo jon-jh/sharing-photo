@@ -4,3 +4,4 @@ export const CLOSE_PHOTO = 'CLOSE_PHOTO';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 export const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
+export const SET_TOPIC_DATA = 'SET_TOPIC_DATA'

@@ -5,7 +5,8 @@ import {
   CLOSE_PHOTO,
   ADD_FAVORITE,
   REMOVE_FAVORITE,
-  SET_PHOTO_DATA
+  SET_PHOTO_DATA,
+  SET_TOPIC_DATA
 } from './actionTypes';
 
 const initialState = {
@@ -23,6 +24,9 @@ function reducer(state, action) {
     // Load photos from API:
     case SET_PHOTO_DATA:
       return { ...state, photos: action.payload }
+    // Load topics from API:
+    case SET_TOPIC_DATA:
+      return { ...state, topics: action.payload }
 
     case SET_SELECTED_PHOTO:
       return { ...state, photoSelected: action.payload };
@@ -81,6 +85,13 @@ const useApplicationData = () => {
         dispatch({ type: SET_PHOTO_DATA, payload: response.data });
       })
   }, []);
+  useEffect(() => {
+    axios.get('http://localhost:8001/api/topics')
+      .then((response) => {
+        // console.log('axios', response.data)
+        dispatch({ type: SET_TOPIC_DATA, payload: response.data });
+      })
+  }, []);
 
   return {
     navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,
@@ -89,7 +100,8 @@ const useApplicationData = () => {
     handlePhotoClick,
     handleCloseButton,
     addOrRemoveFav,
-    photos: state.photos
+    photos: state.photos,
+    topics: state.topics
   };
 };
 
