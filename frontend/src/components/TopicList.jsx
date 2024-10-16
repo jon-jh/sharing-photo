@@ -27,7 +27,7 @@ const TopicList = (props) => {
     console.log(`Topic with id ${id} clicked`);
     // Add your custom logic here
   };
-  
+
   const populateTopicList = topics.map(topic => (
     <TopicListItem key={topic.id} topics={topic} onClick={() => handleClick(topic.id)} />
   ))
