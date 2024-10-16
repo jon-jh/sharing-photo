@@ -15,6 +15,11 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+
+    case SET_PHOTO_DATA:
+      return { ...state, photos: action.payload}
+    
+    
     case SET_SELECTED_PHOTO:
       return { ...state, photoSelected: action.payload };
     case CLOSE_PHOTO:
@@ -25,6 +30,10 @@ function reducer(state, action) {
     case REMOVE_FAVORITE:
       const updatedFavsRemove = state.favoritesArray.filter(fav => Number(fav.id) !== Number(action.payload) + 1);
       return { ...state, favoritesArray: updatedFavsRemove, navAtLeastOneFavCheck: updatedFavsRemove.length > 0 };
+
+    
+
+
     default:
       throw new Error('Unknown action type');
   }
@@ -56,14 +65,18 @@ const useApplicationData = () => {
 
   useEffect(() => {
     console.log('favoritesArray', state.favoritesArray);
-  }, [state.favoritesArray]);
+    console.log('navAtLeastOneFavCheck', state.navAtLeastOneFavCheck);
+    //debug here later
+  });
 
   useEffect(() => {
-    axios.get('api/photos')
+    axios.get('http://localhost:8001/api/photos')
       .then((response) => {
-        console.log(response.data)
+        console.log('axios', response.data)
+        dispatch({ type: SET_PHOTO_DATA, payload: response.data });
       })
   }, []);
+
 
   return {
     navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,
