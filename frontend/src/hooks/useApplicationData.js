@@ -84,12 +84,18 @@ const useApplicationData = () => {
         // console.log('axios', response.data)
         dispatch({ type: SET_PHOTO_DATA, payload: response.data });
       })
+      .catch((error) => {
+        console.error('Error fetching photo data:', error);
+      })
   }, []);
   useEffect(() => {
     axios.get('http://localhost:8001/api/topics')
       .then((response) => {
         // console.log('axios', response.data)
         dispatch({ type: SET_TOPIC_DATA, payload: response.data });
+      })
+      .catch((error) => {
+        console.error('Error fetching topics data:', error);
       })
   }, []);
 
