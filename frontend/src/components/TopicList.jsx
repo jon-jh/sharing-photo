@@ -1,7 +1,6 @@
 import React from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
-import topics from "mocks/topics";
 
 const sampleDataForTopicList = [
   {
@@ -23,9 +22,14 @@ const sampleDataForTopicList = [
 
 const TopicList = (props) => {
   const topics = props.topics;
+
+  const handleClick = (id) => {
+    console.log(`Topic with id ${id} clicked`);
+    // Add your custom logic here
+  };
   
   const populateTopicList = topics.map(topic => (
-    <TopicListItem key={topic.id} topicData={topic} />
+    <TopicListItem key={topic.id} topics={topic} onClick={() => handleClick(topic.id)} />
   ))
   return (
     <div className="top-nav-bar__topic-list">
