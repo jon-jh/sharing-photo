@@ -9,12 +9,13 @@ const HomeRoute = (props) => {
     photos,
     navAtLeastOneFavCheck,
     addOrRemoveFav,
-    handlePhotoClick
+    handlePhotoClick,
+    loadTopicPhotos
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} navAtLeastOneFavCheck={navAtLeastOneFavCheck} />
+      <TopNavigation topics={topics} navAtLeastOneFavCheck={navAtLeastOneFavCheck} loadTopicPhotos={loadTopicPhotos} />
       <PhotoList
         photos={photos}
         navAtLeastOneFavCheck={navAtLeastOneFavCheck}

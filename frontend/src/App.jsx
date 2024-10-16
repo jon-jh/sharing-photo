@@ -12,7 +12,8 @@ const App = () => {
     photoSelected,
     handlePhotoClick,
     handleCloseButton,
-    addOrRemoveFav
+    addOrRemoveFav,
+    loadTopicPhotos
   } = useApplicationData();
 
   return (
@@ -23,6 +24,7 @@ const App = () => {
         navAtLeastOneFavCheck={navAtLeastOneFavCheck}
         addOrRemoveFav={addOrRemoveFav}
         handlePhotoClick={handlePhotoClick}
+        loadTopicPhotos={loadTopicPhotos}
       />
       {photoSelected && (
         <PhotoDetailsModal photo={photoSelected}
