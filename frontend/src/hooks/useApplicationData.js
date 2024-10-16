@@ -1,11 +1,13 @@
 import { useReducer, useEffect } from "react";
 import photos from "mocks/photos";
-import { SET_SELECTED_PHOTO, CLOSE_PHOTO, ADD_FAVORITE, REMOVE_FAVORITE } from './actionTypes';
+import { SET_SELECTED_PHOTO, CLOSE_PHOTO, ADD_FAVORITE, REMOVE_FAVORITE, SET_PHOTO_DATA } from './actionTypes';
 
 const initialState = {
   navAtLeastOneFavCheck: false,
   favoritesArray: [],
   photoSelected: null,
+  photoData: [],
+  topicData: []
 };
 
 
