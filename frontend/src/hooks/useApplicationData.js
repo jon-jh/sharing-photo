@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import photos from "mocks/photos";
 import { SET_SELECTED_PHOTO, CLOSE_PHOTO, ADD_FAVORITE, REMOVE_FAVORITE, SET_PHOTO_DATA } from './actionTypes';
+import axios from "axios";
 
 const initialState = {
   navAtLeastOneFavCheck: false,
@@ -56,6 +57,13 @@ const useApplicationData = () => {
   useEffect(() => {
     console.log('favoritesArray', state.favoritesArray);
   }, [state.favoritesArray]);
+
+  useEffect(() => {
+    axios.get('api/photos')
+      .then((response) => {
+        console.log(response.data)
+      })
+  }, []);
 
   return {
     navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,
