@@ -4,7 +4,7 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const [favButton, toggleFavState] = useState(false);
-  const isFavPhotoExist = props.isFavPhotoExist;
+  const navAtLeastOneFavCheck = props.navAtLeastOneFavCheck;
   const addOrRemoveFav = props.addOrRemoveFav;
   const id = props.id;
 

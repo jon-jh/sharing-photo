@@ -5,10 +5,10 @@ import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
   const topics = props.topics;
-  const isFavPhotoExist = props.isFavPhotoExist;
+  const navAtLeastOneFavCheck = props.navAtLeastOneFavCheck;
   return (
     <div className="top-nav-bar">
-      <FavBadge isFavPhotoExist={isFavPhotoExist} />
+      <FavBadge navAtLeastOneFavCheck={navAtLeastOneFavCheck} />
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topics={topics} />
       

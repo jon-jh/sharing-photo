@@ -8,7 +8,7 @@ import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const {
-    isFavPhotoExist,
+    navAtLeastOneFavCheck,
     photoSelected,
     handlePhotoClick,
     handleCloseButton,
@@ -20,7 +20,7 @@ const App = () => {
       <HomeRoute
         topics={topics}
         photos={photos}
-        isFavPhotoExist={isFavPhotoExist}
+        navAtLeastOneFavCheck={navAtLeastOneFavCheck}
         addOrRemoveFav={addOrRemoveFav}
         handlePhotoClick={handlePhotoClick}
       />
@@ -28,7 +28,7 @@ const App = () => {
         <PhotoDetailsModal photo={photoSelected}
           handleCloseButton={handleCloseButton}
           photos={photos}
-          isFavPhotoExist={isFavPhotoExist}
+          navAtLeastOneFavCheck={navAtLeastOneFavCheck}
           addOrRemoveFav={addOrRemoveFav}
           handlePhotoClick={handlePhotoClick}
         />

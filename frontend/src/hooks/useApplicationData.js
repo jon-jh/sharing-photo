@@ -3,7 +3,7 @@ import photos from "mocks/photos";
 import { SET_SELECTED_PHOTO, CLOSE_PHOTO, ADD_FAVORITE, REMOVE_FAVORITE } from './actionTypes';
 
 const initialState = {
-  isFavPhotoExist: false,
+  navAtLeastOneFavCheck: false,
   favoritesArray: [],
   photoSelected: null,
 };
@@ -18,10 +18,10 @@ function reducer(state, action) {
       return { ...state, photoSelected: null };
     case ADD_FAVORITE:
       const updatedFavsAdd = [...state.favoritesArray, photos[action.payload]];
-      return { ...state, favoritesArray: updatedFavsAdd, isFavPhotoExist: updatedFavsAdd.length > 0 };
+      return { ...state, favoritesArray: updatedFavsAdd, navAtLeastOneFavCheck: updatedFavsAdd.length > 0 };
     case REMOVE_FAVORITE:
       const updatedFavsRemove = state.favoritesArray.filter(fav => Number(fav.id) !== Number(action.payload) + 1);
-      return { ...state, favoritesArray: updatedFavsRemove, isFavPhotoExist: updatedFavsRemove.length > 0 };
+      return { ...state, favoritesArray: updatedFavsRemove, navAtLeastOneFavCheck: updatedFavsRemove.length > 0 };
     default:
       throw new Error('Unknown action type');
   }
@@ -56,7 +56,7 @@ const useApplicationData = () => {
   }, [state.favoritesArray]);
 
   return {
-    isFavPhotoExist: state.isFavPhotoExist,
+    navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,
     favoritesArray: state.favoritesArray,
     photoSelected: state.photoSelected,
     handlePhotoClick,

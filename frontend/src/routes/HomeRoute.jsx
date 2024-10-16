@@ -7,17 +7,17 @@ const HomeRoute = (props) => {
   const {
     topics,
     photos,
-    isFavPhotoExist,
+    navAtLeastOneFavCheck,
     addOrRemoveFav,
     handlePhotoClick
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} />
+      <TopNavigation topics={topics} navAtLeastOneFavCheck={navAtLeastOneFavCheck} />
       <PhotoList
         photos={photos}
-        isFavPhotoExist={isFavPhotoExist}
+        navAtLeastOneFavCheck={navAtLeastOneFavCheck}
         addOrRemoveFav={addOrRemoveFav}
         handlePhotoClick={handlePhotoClick}
       />

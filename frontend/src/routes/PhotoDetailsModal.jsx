@@ -4,7 +4,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { photo, handleCloseButton, isFavPhotoExist, addOrRemoveFav, handlePhotoClick } = props;
+  const { photo, handleCloseButton, navAtLeastOneFavCheck, addOrRemoveFav, handlePhotoClick } = props;
 
   const {
     id,
@@ -34,7 +34,7 @@ const PhotoDetailsModal = (props) => {
       <div className="photo-details-modal__images">
         
         <h2>Similar Photos</h2>
-        {similar_photos && <PhotoList photos={Object.values(similar_photos)} isFavPhotoExist={isFavPhotoExist} addOrRemoveFav={addOrRemoveFav} handlePhotoClick={handlePhotoClick}/>}
+        {similar_photos && <PhotoList photos={Object.values(similar_photos)} navAtLeastOneFavCheck={navAtLeastOneFavCheck} addOrRemoveFav={addOrRemoveFav} handlePhotoClick={handlePhotoClick}/>}
 
       </div>
     </div>

@@ -57,13 +57,13 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const { photos, isFavPhotoExist, addOrRemoveFav, handlePhotoClick} = props;
+  const { photos, navAtLeastOneFavCheck, addOrRemoveFav, handlePhotoClick} = props;
 
   const photoPopulator = photos.map(photo => (
     <PhotoListItem
       key={photo.id}
       photoData={photo}
-      isFavPhotoExist={isFavPhotoExist}
+      navAtLeastOneFavCheck={navAtLeastOneFavCheck}
       addOrRemoveFav={addOrRemoveFav}
       handlePhotoClick={handlePhotoClick}
     />
