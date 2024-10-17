@@ -1,7 +1,7 @@
-import React from 'react';
-import '../styles/HomeRoute.scss';
-import TopNavigation from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
+import React from "react";
+import "../styles/HomeRoute.scss";
+import TopNavigation from "components/TopNavigationBar";
+import PhotoList from "components/PhotoList";
 
 const HomeRoute = (props) => {
   const {
@@ -11,12 +11,16 @@ const HomeRoute = (props) => {
     addOrRemoveFav,
     handlePhotoClick,
     loadTopicPhotos,
-    favoritesArray
+    favoritesArray,
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} navAtLeastOneFavCheck={navAtLeastOneFavCheck} loadTopicPhotos={loadTopicPhotos} />
+      <TopNavigation
+        topics={topics}
+        navAtLeastOneFavCheck={navAtLeastOneFavCheck}
+        loadTopicPhotos={loadTopicPhotos}
+      />
       <PhotoList
         photos={photos}
         navAtLeastOneFavCheck={navAtLeastOneFavCheck}

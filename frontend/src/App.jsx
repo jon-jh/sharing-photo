@@ -1,9 +1,8 @@
-import React from 'react';
-import './App.scss';
-import HomeRoute from 'routes/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from 'hooks/useApplicationData';
-
+import React from "react";
+import "./App.scss";
+import HomeRoute from "routes/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
   const {
@@ -15,7 +14,7 @@ const App = () => {
     handleCloseButton,
     addOrRemoveFav,
     loadTopicPhotos,
-    favoritesArray
+    favoritesArray,
   } = useApplicationData();
 
   return (
@@ -30,7 +29,8 @@ const App = () => {
         favoritesArray={favoritesArray}
       />
       {photoSelected && (
-        <PhotoDetailsModal photo={photoSelected}
+        <PhotoDetailsModal
+          photo={photoSelected}
           handleCloseButton={handleCloseButton}
           photos={photos}
           navAtLeastOneFavCheck={navAtLeastOneFavCheck}

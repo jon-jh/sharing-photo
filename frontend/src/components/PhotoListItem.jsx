@@ -7,7 +7,7 @@ const PhotoListItem = (props) => {
     id,
     user: { name: username, profile },
     urls: { full: imageSource },
-    location: { city, country }
+    location: { city, country },
   } = props.photoData;
   const navAtLeastOneFavCheck = props.navAtLeastOneFavCheck;
   const addPhotoToFavorites = props.addPhotoToFavorites;
@@ -17,17 +17,29 @@ const PhotoListItem = (props) => {
 
   return (
     <div>
-      <div className="photo-list__item" key={id} >
+      <div className="photo-list__item" key={id}>
+        <PhotoFavButton
+          navAtLeastOneFavCheck={navAtLeastOneFavCheck}
+          addPhotoToFavorites={addPhotoToFavorites}
+          addOrRemoveFav={addOrRemoveFav}
+          photo={props.photoData}
+          favoritesArray={favoritesArray}
+        />
 
-        <PhotoFavButton navAtLeastOneFavCheck={navAtLeastOneFavCheck} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} photo={props.photoData} favoritesArray={favoritesArray}/>
-
-        <img className="photo-list__image" src={imageSource} alt="Photo" onClick={() => handlePhotoClick(props.photoData)} />
+        <img
+          className="photo-list__image"
+          src={imageSource}
+          alt="Photo"
+          onClick={() => handlePhotoClick(props.photoData)}
+        />
 
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={profile} />
           <div className="photo-list__user-info">
             <p>{username}</p>
-            <p className="photo-list__user-location">{city}, {country}</p>
+            <p className="photo-list__user-location">
+              {city}, {country}
+            </p>
           </div>
         </div>
       </div>

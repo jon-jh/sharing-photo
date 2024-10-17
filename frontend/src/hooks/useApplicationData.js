@@ -7,16 +7,15 @@ import {
   REMOVE_FAVORITE,
   SET_PHOTO_DATA,
   SET_TOPIC_DATA,
-  GET_PHOTOS_BY_TOPICS
+  GET_PHOTOS_BY_TOPICS,
 } from "./actionTypes";
-
 
 const initialState = {
   photoSelected: null,
   navAtLeastOneFavCheck: false,
   favoritesArray: [],
   photos: [],
-  topics: []
+  topics: [],
 };
 
 // Reducer Function
@@ -30,94 +29,86 @@ function reducer(state, action) {
       return { ...state, photoSelected: action.payload };
     case CLOSE_PHOTO:
       return { ...state, photoSelected: null };
-
     case ADD_FAVORITE:
-      console.log('Photos array:', state.photos);
-      console.log('Action payload:', action.payload);
-      const photoToAdd = state.photos.find(photo => photo.id === action.payload);
-      console.log('Photo to add:', photoToAdd);
+      const photoToAdd = state.photos.find(
+        (photo) => photo.id === action.payload
+      );
       if (photoToAdd) {
         const updatedFavsAdd = [...state.favoritesArray, photoToAdd];
-        console.log('Updated favorites array (add):', updatedFavsAdd);
-        return { ...state, favoritesArray: updatedFavsAdd, navAtLeastOneFavCheck: updatedFavsAdd.length > 0 };
+        return {
+          ...state,
+          favoritesArray: updatedFavsAdd,
+          navAtLeastOneFavCheck: updatedFavsAdd.length > 0,
+        };
       }
       return state;
-
     case REMOVE_FAVORITE:
-      const updatedFavsRemove = state.favoritesArray.filter(fav => fav.id !== action.payload);
-      console.log('Updated favorites array (remove):', updatedFavsRemove);
-      return { ...state, favoritesArray: updatedFavsRemove, navAtLeastOneFavCheck: updatedFavsRemove.length > 0 };
-
+      const updatedFavsRemove = state.favoritesArray.filter(
+        (fav) => fav.id !== action.payload
+      );
+      return {
+        ...state,
+        favoritesArray: updatedFavsRemove,
+        navAtLeastOneFavCheck: updatedFavsRemove.length > 0,
+      };
     case GET_PHOTOS_BY_TOPICS:
       return { ...state, photos: action.payload };
     default:
-      throw new Error('Unknown action type');
+      throw new Error("Unknown action");
   }
 }
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   const handlePhotoClick = (photo) => {
-    dispatch({ type: 'SET_SELECTED_PHOTO', payload: photo });
-    console.log('Photo was clicked');
+    dispatch({ type: "SET_SELECTED_PHOTO", payload: photo });
   };
-
   const handleCloseButton = () => {
-    dispatch({ type: 'CLOSE_PHOTO' });
-    console.log('Modal close button was clicked');
+    dispatch({ type: "CLOSE_PHOTO" });
   };
-
-  // Debug Logs
-  useEffect(() => {
-    console.log('favoritesArray status: ', state.favoritesArray);
-    console.log('navAtLeastOneFavCheck: ', state.navAtLeastOneFavCheck);
-  });
 
   // API Load
   useEffect(() => {
-    axios.get('http://localhost:8001/api/photos')
+    axios
+      .get("http://localhost:8001/api/photos")
       .then((response) => {
         dispatch({ type: SET_PHOTO_DATA, payload: response.data });
       })
       .catch((error) => {
-        console.error('Error fetching photo data:', error);
+        console.error("Error fetching photo data:", error);
       });
   }, []);
 
   useEffect(() => {
-    axios.get('http://localhost:8001/api/topics')
+    axios
+      .get("http://localhost:8001/api/topics")
       .then((response) => {
         dispatch({ type: SET_TOPIC_DATA, payload: response.data });
       })
       .catch((error) => {
-        console.error('Error fetching topics data:', error);
+        console.error("Error fetching topics data:", error);
       });
   }, []);
 
   const loadTopicPhotos = (topic_id) => {
-    axios.get(`http://localhost:8001/api/topics/photos/${topic_id}`)
+    axios
+      .get(`http://localhost:8001/api/topics/photos/${topic_id}`)
       .then((response) => {
         dispatch({ type: GET_PHOTOS_BY_TOPICS, payload: response.data });
       })
       .catch((error) => {
-        console.error('Error fetching photos by topics:', error);
+        console.error("Error fetching photos by topics:", error);
       });
   };
 
   const addOrRemoveFav = (photo, isFavorite) => {
     const id = photo.id;
-    console.log('addOrRemoveFav called with photo:', photo);
-    console.log('addOrRemoveFav called with id:', id, 'isFavorite:', isFavorite);
     if (isFavorite) {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: id });
-      console.log('REMOVE_FAVORITE dispatched with id:', id);
+      dispatch({ type: "REMOVE_FAVORITE", payload: id });
     } else {
-      dispatch({ type: 'ADD_FAVORITE', payload: id });
-      console.log('ADD_FAVORITE dispatched with id:', id);
+      dispatch({ type: "ADD_FAVORITE", payload: id });
     }
   };
-
 
   return {
     navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,
@@ -128,7 +119,7 @@ const useApplicationData = () => {
     addOrRemoveFav,
     photos: state.photos,
     topics: state.topics,
-    loadTopicPhotos
+    loadTopicPhotos,
   };
 };
 

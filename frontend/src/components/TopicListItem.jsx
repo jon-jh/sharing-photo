@@ -5,7 +5,6 @@ const TopicListItem = (props) => {
   const { loadTopicPhotos, topics } = props;
 
   const handleClick = () => {
-    console.log(topics.title);
     loadTopicPhotos(topics.id);
   };
 

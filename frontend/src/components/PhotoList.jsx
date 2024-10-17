@@ -19,13 +19,19 @@ const sampleDataForPhotoList = [
       name: "Joe Example",
       profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
     },
-  }
+  },
 ];
 
 const PhotoList = (props) => {
-  const { photos, navAtLeastOneFavCheck, addOrRemoveFav, handlePhotoClick, favoritesArray} = props;
+  const {
+    photos,
+    navAtLeastOneFavCheck,
+    addOrRemoveFav,
+    handlePhotoClick,
+    favoritesArray,
+  } = props;
 
-  const photoPopulator = photos.map(photo => (
+  const photoPopulator = photos.map((photo) => (
     <PhotoListItem
       key={photo.id}
       photoData={photo}
@@ -36,11 +42,7 @@ const PhotoList = (props) => {
     />
   ));
 
-  return (
-    <ul className="photo-list">
-      {photoPopulator}
-    </ul>
-  );
+  return <ul className="photo-list">{photoPopulator}</ul>;
 };
 
 export default PhotoList;
