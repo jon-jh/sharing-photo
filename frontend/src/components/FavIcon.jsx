@@ -18,15 +18,14 @@ const FavIcon = ({ displayAlert, selected }) => {
         strokeLinejoin="round"
       />
       {/* fav icon per photo */}
-
       {!!displayAlert && (
         <circle
-          cx="20"
+          cx="19.5"
           cy="4"
           r="4"
-          fill="#FFFF00"
-          stroke="#C80000"
-          strokeWidth="0.5"
+          fill="tomato"
+          stroke="tomato"
+          strokeWidth="1"
         />
       )}
       {/* fav icon status in the header */}
