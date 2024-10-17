@@ -13,12 +13,13 @@ const PhotoListItem = (props) => {
   const addPhotoToFavorites = props.addPhotoToFavorites;
   const addOrRemoveFav = props.addOrRemoveFav;
   const handlePhotoClick = props.handlePhotoClick;
+  const favoritesArray = props.favoritesArray;
 
   return (
     <div>
       <div className="photo-list__item" key={id} >
 
-        <PhotoFavButton navAtLeastOneFavCheck={navAtLeastOneFavCheck} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} photo={props.photoData} />
+        <PhotoFavButton navAtLeastOneFavCheck={navAtLeastOneFavCheck} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} photo={props.photoData} favoritesArray={favoritesArray}/>
 
         <img className="photo-list__image" src={imageSource} alt="Photo" onClick={() => handlePhotoClick(props.photoData)} />
 

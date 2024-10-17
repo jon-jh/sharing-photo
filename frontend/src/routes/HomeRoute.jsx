@@ -10,7 +10,8 @@ const HomeRoute = (props) => {
     navAtLeastOneFavCheck,
     addOrRemoveFav,
     handlePhotoClick,
-    loadTopicPhotos
+    loadTopicPhotos,
+    favoritesArray
   } = props;
 
   return (
@@ -21,6 +22,7 @@ const HomeRoute = (props) => {
         navAtLeastOneFavCheck={navAtLeastOneFavCheck}
         addOrRemoveFav={addOrRemoveFav}
         handlePhotoClick={handlePhotoClick}
+        favoritesArray={favoritesArray}
       />
     </div>
   );

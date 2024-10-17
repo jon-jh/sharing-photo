@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const [favButton, toggleFavState] = useState(false);
+  const [favButton, setFavButton] = useState(false);
   const addOrRemoveFav = props.addOrRemoveFav;
   const photo = props.photo;
+  const favoritesArray = props.favoritesArray
+
+  useEffect(() => {
+    setFavButton(props.favoritesArray.some(fav => fav.id === photo.id));
+  }, [props.favoritesArray, photo.id]);
 
   const handleFav = () => {
-    toggleFavState(!favButton);
-    console.log('handleFav called with photo:', photo);
     addOrRemoveFav(photo, favButton);
+    setFavButton(!favButton);
   };
 
   return (
