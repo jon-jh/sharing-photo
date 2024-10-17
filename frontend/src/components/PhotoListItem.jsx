@@ -17,10 +17,10 @@ const PhotoListItem = (props) => {
   return (
     <div>
       <div className="photo-list__item" key={id} >
-        
-        <PhotoFavButton navAtLeastOneFavCheck={navAtLeastOneFavCheck} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} id={id} />
-        
-      <img className="photo-list__image" src={imageSource} alt="Photo" onClick={() => handlePhotoClick(props.photoData)} />
+
+        <PhotoFavButton navAtLeastOneFavCheck={navAtLeastOneFavCheck} addPhotoToFavorites={addPhotoToFavorites} addOrRemoveFav={addOrRemoveFav} photo={props.photoData} />
+
+        <img className="photo-list__image" src={imageSource} alt="Photo" onClick={() => handlePhotoClick(props.photoData)} />
 
         <div className="photo-list__user-details">
           <img className="photo-list__user-profile" src={profile} />

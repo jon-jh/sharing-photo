@@ -30,12 +30,24 @@ function reducer(state, action) {
       return { ...state, photoSelected: action.payload };
     case CLOSE_PHOTO:
       return { ...state, photoSelected: null };
+
     case ADD_FAVORITE:
-      const updatedFavsAdd = [...state.favoritesArray, state.photos[action.payload]];
-      return { ...state, favoritesArray: updatedFavsAdd, navAtLeastOneFavCheck: updatedFavsAdd.length > 0 };
+      console.log('Photos array:', state.photos);
+      console.log('Action payload:', action.payload);
+      const photoToAdd = state.photos.find(photo => photo.id === action.payload);
+      console.log('Photo to add:', photoToAdd);
+      if (photoToAdd) {
+        const updatedFavsAdd = [...state.favoritesArray, photoToAdd];
+        console.log('Updated favorites array (add):', updatedFavsAdd);
+        return { ...state, favoritesArray: updatedFavsAdd, navAtLeastOneFavCheck: updatedFavsAdd.length > 0 };
+      }
+      return state;
+
     case REMOVE_FAVORITE:
-      const updatedFavsRemove = state.favoritesArray.filter(fav => Number(fav.id) !== Number(action.payload) + 1);
+      const updatedFavsRemove = state.favoritesArray.filter(fav => fav.id !== action.payload);
+      console.log('Updated favorites array (remove):', updatedFavsRemove);
       return { ...state, favoritesArray: updatedFavsRemove, navAtLeastOneFavCheck: updatedFavsRemove.length > 0 };
+
     case GET_PHOTOS_BY_TOPICS:
       return { ...state, photos: action.payload };
     default:
@@ -48,28 +60,18 @@ const useApplicationData = () => {
 
   const handlePhotoClick = (photo) => {
     dispatch({ type: 'SET_SELECTED_PHOTO', payload: photo });
-    console.log('You clicked a photo');
+    console.log('Photo was clicked');
   };
 
   const handleCloseButton = () => {
     dispatch({ type: 'CLOSE_PHOTO' });
-    console.log('The modal close button was clicked');
-  };
-
-  const addOrRemoveFav = (id, isFavorite) => {
-    if (isFavorite) {
-      dispatch({ type: 'REMOVE_FAVORITE', payload: id });
-      console.log('Updated favoritesArray (REMOVAL)');
-    } else {
-      dispatch({ type: 'ADD_FAVORITE', payload: id });
-      console.log('Updated favoritesArray (ADDITION)');
-    }
+    console.log('Modal close button was clicked');
   };
 
   // Debug Logs
   useEffect(() => {
-    console.log('favoritesArray', state.favoritesArray);
-    console.log('navAtLeastOneFavCheck', state.navAtLeastOneFavCheck);
+    console.log('favoritesArray status: ', state.favoritesArray);
+    console.log('navAtLeastOneFavCheck: ', state.navAtLeastOneFavCheck);
   });
 
   // API Load
@@ -102,6 +104,20 @@ const useApplicationData = () => {
         console.error('Error fetching photos by topics:', error);
       });
   };
+
+  const addOrRemoveFav = (photo, isFavorite) => {
+    const id = photo.id;
+    console.log('addOrRemoveFav called with photo:', photo);
+    console.log('addOrRemoveFav called with id:', id, 'isFavorite:', isFavorite);
+    if (isFavorite) {
+      dispatch({ type: 'REMOVE_FAVORITE', payload: id });
+      console.log('REMOVE_FAVORITE dispatched with id:', id);
+    } else {
+      dispatch({ type: 'ADD_FAVORITE', payload: id });
+      console.log('ADD_FAVORITE dispatched with id:', id);
+    }
+  };
+
 
   return {
     navAtLeastOneFavCheck: state.navAtLeastOneFavCheck,

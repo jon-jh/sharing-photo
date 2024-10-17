@@ -4,13 +4,13 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const [favButton, toggleFavState] = useState(false);
-  // const navAtLeastOneFavCheck = props.navAtLeastOneFavCheck; (not using?)
   const addOrRemoveFav = props.addOrRemoveFav;
-  const id = props.id;
+  const photo = props.photo;
 
   const handleFav = () => {
     toggleFavState(!favButton);
-    addOrRemoveFav(id, favButton);
+    console.log('handleFav called with photo:', photo);
+    addOrRemoveFav(photo, favButton);
   };
 
   return (
