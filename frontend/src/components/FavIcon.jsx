@@ -1,11 +1,11 @@
 import React from "react";
 
-const FavIcon = ({ displayAlert, selected }) => {
+const FavIcon = ({ displayAlert, selected, favoritesArrayCount }) => {
   return (
     <svg
-      width="20"
-      height="17"
-      viewBox="0 0 24 19"
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -19,14 +19,27 @@ const FavIcon = ({ displayAlert, selected }) => {
       />
       {/* fav icon per photo */}
       {!!displayAlert && (
-        <circle
-          cx="19.5"
-          cy="4"
-          r="4"
-          fill="tomato"
-          stroke="tomato"
-          strokeWidth="1"
-        />
+        <>
+          <circle
+            cx="19.5"
+            cy="5"
+            r="4"
+            fill="tomato"
+            stroke="tomato"
+            strokeWidth="1"
+          />
+          <text
+            x="11"
+            y="10.5"
+            fill="tomato"
+            fontSize="12"
+            fontWeight="bold"
+            textAnchor="middle"
+            dy=".3em"
+          >
+            {favoritesArrayCount}
+          </text>
+        </>
       )}
       {/* fav icon status in the header */}
     </svg>

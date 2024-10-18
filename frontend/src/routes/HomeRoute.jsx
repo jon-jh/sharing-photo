@@ -20,6 +20,7 @@ const HomeRoute = (props) => {
         topics={topics}
         navAtLeastOneFavCheck={navAtLeastOneFavCheck}
         loadTopicPhotos={loadTopicPhotos}
+        favoritesArrayCount={favoritesArray.length}
       />
       <PhotoList
         photos={photos}
