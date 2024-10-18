@@ -1,10 +1,11 @@
 .photo-list__item {
   margin: 8px;
-  padding: 9px;
+  padding: 8px;
   border-width: 1px;
   border-color: lightgray;
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 16px;
+  background-color: white;
 }
 
 .photo-list__image {
