@@ -9,7 +9,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 95%;
-  width: 50%;
+  width: 65%;
   border-radius: 10px;
   // Scrollbar Appearance
   overflow-y: scroll;
@@ -20,12 +20,11 @@
   display: none; /* For Chrome, Safari, and Opera */
 }
 .photo-details-modal__close-button {
-  background-color: transparent;
+  background-color: white;
   border-radius: 30%;
-  align-self: flex-start;
+  align-self: flex-end;
   position: sticky;
-  padding-top:5px;
-  padding-left:5px;
+  padding-top:3px;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -44,7 +43,7 @@
   line-height: 0.1;
 }
 .photo-details-modal__image {
-  max-width: 90%;
+  max-width: 85%;
   max-height: 70%;
 }
 .photo-details-modal__top-bar {
