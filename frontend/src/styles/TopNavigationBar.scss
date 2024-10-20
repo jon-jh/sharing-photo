@@ -1,20 +1,17 @@
 .top-nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: 7px;
+  justify-content: space-around;
+  padding: 0px;
   align-items: center;
-  -webkit-box-shadow: 0 4px 6px -6px #222;
-  -moz-box-shadow: 0 4px 6px -6px #222;
-  box-shadow: 0 4px 6px -6px #222;
   height: 72px;
+  margin-right: 65px; // to compensate for smaller favorite icon vs photolabs logo on the left.
 }
 
 .top-nav-bar__logo {
   text-decoration: overline;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
   color: #111;
   text-underline-position: auto;
-  margin-left: 24px;
 }
