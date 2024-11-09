@@ -1,6 +1,6 @@
-!['main page'](https://github.com/jon-jh/sharing-photo/blob/main/docs/overview.png)
-!['similar photos in modal'](https://github.com/jon-jh/sharing-photo/blob/main/docs/related-photos.png)
-!['notification and counter'](https://github.com/jon-jh/sharing-photo/blob/main/docs/like-counter.png)
+![Screenshot of the app](docs/homepage1.png)
+![Screenshot of the app](docs/modal.png)
+
 
 # react-photolabs
 The PhotoLabs project for the Web Development React course programming.
